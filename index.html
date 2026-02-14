@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>For You!! ❤️</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You!! <3 ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,113 +20,119 @@
         }
 
         .container {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 75, 92, 0.2);
             max-width: 400px;
+            z-index: 10;
+            border: 4px solid #fff;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         h1 {
-            font-size: 35px;
+            font-size: 32px;
             margin-bottom: 15px;
             color: #ff4b5c;
+            text-shadow: 2px 2px #ffe6e6;
         }
 
         p {
-            font-size: 16px;
-            color: #555;
+            font-size: 18px;
+            color: #777;
             margin-bottom: 25px;
         }
 
         img {
-            width: 200px;
+            width: 180px;
             margin-bottom: 25px;
-            border-radius: 15px;
+            border-radius: 20px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
         }
 
         .buttons {
             display: flex;
             justify-content: center;
             gap: 20px;
+            min-height: 50px;
         }
 
         button {
             border: none;
-            padding: 12px 25px;
-            font-size: 16px;
-            border-radius: 20px;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         #yesBtn {
             background: #ff4b5c;
             color: white;
+            box-shadow: 0 5px 15px rgba(255, 75, 92, 0.4);
         }
 
         #yesBtn:hover {
             background: #ff2e44;
-            transform: scale(1.05);
+            transform: scale(1.1) rotate(-3deg);
         }
 
         #noBtn {
-            background: #eee;
-            color: #333;
-            position: relative;
+            background: #f0f0f0;
+            color: #888;
+            position: relative; /* Script changes this to fixed on hover */
+            z-index: 1000;
         }
 
-        .celebration {
-            animation: pop 0.5s ease forwards;
+        .emoji {
+            position: fixed;
+            top: -50px;
+            font-size: 24px;
+            user-select: none;
+            z-index: 1;
+            animation: fall linear forwards;
         }
 
-        @keyframes pop {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
         }
-   .emoji {
-    position: fixed;
-    top: -50px;
-    font-size: 24px;
-    user-select: none;
-    z-index: 1000;
-    animation: fall linear forwards;
-}
-@keyframes fall {
-    to { transform: translateY(110vh) rotate(360deg); }
-} </style>
+    </style>
 </head>
-
 <body>
 
-<div class="container">
-    <h1 id="message">Will you be my Valentine?😭 ❤️</h1>
-    <p id="subtext">Ofcouse Yes😜😜</p>
+<div class="container" id="mainContainer">
+    <h1 id="message">Will you be my Valentine? 😭❤️</h1>
+    <p id="subtext">Of course Yes, right? 😜</p>
 
-    <img id="gif" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+    <img id="gif" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="Cute GIF">
 
-    <div class="buttons">
-        <button id="yesBtn">Yessssssssssss 😌</button>
+    <div class="buttons" id="btnWrapper">
+        <button id="yesBtn">Yesssssss 😌</button>
         <button id="noBtn">Nooiii 😋</button>
     </div>
 </div>
-</div>
 
 <script>
-    // 1. Setup existing buttons and elements
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
     const gif = document.getElementById("gif");
     const message = document.getElementById("message");
     const subtext = document.getElementById("subtext");
+    const btnWrapper = document.getElementById("btnWrapper");
 
-  / // 2. Music Setup
-const audio = new Audio('https://www.soundtrackpro.com/wp-content/uploads/2021/05/Romantic-Piano.mp3');
-audio.loop = true;
+    // Music Setup
+    const audio = new Audio('https://www.soundtrackpro.com/wp-content/uploads/2021/05/Romantic-Piano.mp3');
+    audio.loop = true;
 
-    // 3. Falling Emojis Logic
+    // Falling Emojis Logic
     function createEmoji() {
-        const emojis = ['❤️', '🌹', '💖', '🌸'];
+        const emojis = ['❤️', '🌹', '💖', '🌸', '✨'];
         const div = document.createElement('div');
         div.classList.add('emoji');
         div.innerText = emojis[Math.floor(Math.random() * emojis.length)];
@@ -136,30 +143,23 @@ audio.loop = true;
     }
     setInterval(createEmoji, 300);
 
-    // 4. NO Button Jump Trick
-   noBtn.addEventListener("mouseover", () => {
-    // This makes sure the button can move anywhere!
-    noBtn.style.position = "fixed"; 
-    
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
-    
-    noBtn.style.left = `${x}px`;
-    noBtn.style.top = `${y}px`;
-});
+    // NO Button Jump Logic
+    noBtn.addEventListener("mouseover", () => {
+        noBtn.style.position = "fixed"; 
+        const x = Math.random() * (window.innerWidth - 150);
+        const y = Math.random() * (window.innerHeight - 50);
+        noBtn.style.left = `${x}px`;
+        noBtn.style.top = `${y}px`;
+    });
 
-    // 5. YES Button Magic
-yesBtn.addEventListener("click", () => {
-    message.innerText = "YAYYY YOU ARE BUNNYFIED ❤️";
-    subtext.innerText = "You just made my day Darling💐 😌";
-    gif.src = "https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif";
-    
-    // This is the "Key" that starts the car!
-    audio.play(); 
+    // YES Button Magic
+    yesBtn.addEventListener("click", () => {
+        message.innerText = "YAYYY YOU ARE BUNNYFIED ❤️";
+        subtext.innerText = "You just made my day Darling! 💐😌";
+        gif.src = "https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif";
+        
+        // Start the music!
+        audio.play().catch(e => console.log("Audio play blocked until interaction"));
 
-    yesBtn.style.display = "none";
-    noBtn.style.display = "none";
-});
-</script>
-</body>
-</html>
+        // Hide buttons
+        btnWrapper.style.display = "none";
