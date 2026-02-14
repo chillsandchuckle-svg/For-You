@@ -105,8 +105,8 @@
     <img id="gif" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
 
     <div class="buttons">
-        <button id="yesBtn">Yes 😌</button>
-        <button id="noBtn">No 😋</button>
+        <button id="yesBtn">Yessssssssssss 😌</button>
+        <button id="noBtn">Nooiii 😋</button>
     </div>
 </div>
 </div>
@@ -146,17 +146,17 @@ audio.loop = true;
     });
 
     // 5. YES Button Magic
-    yesBtn.addEventListener("click", () => {
-        message.innerText = "YAYYY You Are Bunnyfied🥰😭 ❤️";
-        subtext.innerText = "You just made me the happiest person alive Darling😌";
-        gif.src = "https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif";
-        document.querySelector(".container").classList.add("celebration");
-        yesBtn.style.display = "none";
-        noBtn.style.display = "none";
-        
-        // Play the music!
-        audio.play();
-    });
+yesBtn.addEventListener("click", () => {
+    message.innerText = "YAYYY YOU ARE BUNNYFIED ❤️";
+    subtext.innerText = "You just made my day Darling💐 😌";
+    gif.src = "https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif";
+    
+    // This is the "Key" that starts the car!
+    audio.play(); 
+
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+});
 </script>
 </body>
 </html>
