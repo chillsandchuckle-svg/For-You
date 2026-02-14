@@ -109,54 +109,54 @@
         <button id="noBtn">No 😋</button>
     </div>
 </div>
+</div>
 
-// Function for falling emojis
-function createEmoji() {
-    const emojis = ['❤️', '🌹', '💖', '🌸'];
-    const div = document.createElement('div');
-    div.classList.add('emoji');
-    div.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-    div.style.left = Math.random() * 100 + "vw";
-    div.style.animationDuration = Math.random() * 3 + 2 + "s";
-    document.body.appendChild(div);
-    setTimeout(() => div.remove(), 5000);
-}
-setInterval(createEmoji, 300);
-
-// Add sound to the Yes button
-const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
-document.getElementById("yesBtn").addEventListener("click", () => {
-    audio.play();
-});<script>
+<script>
+    // 1. Setup existing buttons and elements
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
     const gif = document.getElementById("gif");
     const message = document.getElementById("message");
     const subtext = document.getElementById("subtext");
 
-    // NO Button Jump Trick 😌
+    // 2. // 2. Music Setup
+const audio = new Audio('https://www.soundtrackpro.com/wp-content/uploads/2021/05/Romantic-Piano.mp3');
+audio.loop = true;
+
+    // 3. Falling Emojis Logic
+    function createEmoji() {
+        const emojis = ['❤️', '🌹', '💖', '🌸'];
+        const div = document.createElement('div');
+        div.classList.add('emoji');
+        div.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        div.style.left = Math.random() * 100 + "vw";
+        div.style.animationDuration = Math.random() * 3 + 2 + "s";
+        document.body.appendChild(div);
+        setTimeout(() => div.remove(), 5000);
+    }
+    setInterval(createEmoji, 300);
+
+    // 4. NO Button Jump Trick
     noBtn.addEventListener("mouseover", () => {
         const x = Math.random() * (window.innerWidth - 100);
         const y = Math.random() * (window.innerHeight - 50);
-
         noBtn.style.position = "absolute";
         noBtn.style.left = `${x}px`;
         noBtn.style.top = `${y}px`;
     });
 
-    // YES Button Magic ❤️
+    // 5. YES Button Magic
     yesBtn.addEventListener("click", () => {
-        message.innerText = "YAYYY You Are BUNNYFIED ❤️";
-        subtext.innerText = "I guess you're stuck with me now! 🤭❤️😌";
-
+        message.innerText = "YAYYY You Are Bunnyfied🥰😭 ❤️";
+        subtext.innerText = "You just made me the happiest person alive Darling😌";
         gif.src = "https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif";
-
         document.querySelector(".container").classList.add("celebration");
-
         yesBtn.style.display = "none";
         noBtn.style.display = "none";
+        
+        // Play the music!
+        audio.play();
     });
 </script>
-
 </body>
 </html>
